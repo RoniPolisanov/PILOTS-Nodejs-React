@@ -5,14 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="../assets/includes/style.css">
     <title>Haim and Roni's API</title>
 </head>
 
 <body>
     <header>
-        <nav>
-        </nav>
+        <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">
+        <h3 class="w3-bar-item">Navigation</h3>
+        <ul style="list-style: none">
+        <ul>
+            <li><a href="#producer" class="w3-bar-item w3-button">Producer</a></li>
+            <li><a href="#project" class="w3-bar-item w3-button">Consumer</a></li>
+            <li><a href="#consumer" class="w3-bar-item w3-button">Project</a></li>
+        </ul>
+    </div>
     </header>
     <main>
         <div class="container">
@@ -20,11 +28,13 @@
                 <div class="col-lg-12">
                     <h1>PILOTS - RESTful Service API Documentation</h1> 
                     <ul type="square">
+                    <article>
                     <h4 id='general'>General Description</h4>
-                    <p>This is a general-purpose platform for creators to help bring creative projects to life with the help of consumers who decide which project they are willing to contribute credits to, and as a result help creators to reach the goal they set for themselves, helping creators to publish their projects.
-                            This model tracks its roots to subscription model of arts patronage, where artists would go directly to their audiences to fund their work</p>
+                    <p>This is a general-purpose platform for creators to help bring creative projects to life with the help of consumers who decide which project they are willing to contribute credits to.
+                        <br>As a result, help creators to reach the goal they set for themselves and helping creators to publish their projects.
+                        <br>This model tracks its roots to subscription model of arts patronage, where artists would go directly to their audiences to fund their work</p>
                     <li><h4 id='producer'>Producer</h4></li>
-                        <h3>Schema</h3>
+                        <h2>Schema</h2>
                         <pre>
 {
     id: mongoose.Schema.Types.ObjectId,
@@ -36,70 +46,71 @@
     projects: [{ type: mongoose.Schema.Types.ObjectId, ref: "ProjectSchema" }]
 }</pre>
                         <h3>/producer/</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
                         <p><b>Response:</b> all existing producers in the system.</p>
-                        <p>URL: 
-                            <a href="https://pilots.herokuapp.com/producer" class="text-black">https://pilots.herokuapp.com/producer</a>
+                        <p><b>URL:</b> 
+                            <a href="https://pilotsapp.herokuapp.com/producer" class="text-black">https://pilotsapp.herokuapp.com/producer</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/producer/createProfile/</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-secondary">POST</span>
                         </p>
-                        <p>Parameters: user_name, password, full_name, phone, email</p>
-                        <p><b>Response:</b>: success/fail regarding user creation.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/producer/createProfile" class="text-black">https://pilots.herokuapp.com/producer/createProfile</a>
+                        <p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
+                        <p><b>Response:</b> success/fail regarding user creation.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/producer/createProfile" class="text-black">https://pilotsapp.herokuapp.com/producer/createProfile</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/producer/getProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching id's profile details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/producer/getProfile/:id" class="text-black">https://pilots.herokuapp.com/producer/getProfile/:id</a>
+                        <p><b>Response:</b> all matching id's profile details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/producer/getProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/getProfile/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
+<pre>
+{
+    "_id": {
+        "$oid": "5b1e49a6a6e87e0798b871bf"
+    },
+    "Projects": [
+        {
+            "$oid": "5b1e4a25a6e87e0798b871c3"
+        }
+    ],
+    "User Name": "m0nkeykong",
+    "Password": "xyza1234",
+    "Full Name": "Haim Elbaz",
+    "Phone": "054-9992341",
+    "Email": "lovesbanana@gmail.com"
+}</pre>
 
                         <h3>producer/updateProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p>Parameters: user_name, password, full_name, phone, email</p>                        
-                        <p><b>Response:</b>: success/fail regarding profile update.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/producer/updateProfile/:id" class="text-black">https://pilots.herokuapp.com/producer/updateProfile/:id</a>
+                        <p><b>Parameters:</b> user_name, password, full_name, phone, email</p>                        
+                        <p><b>Response:</b> success/fail regarding profile update.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/producer/updateProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/updateProfile/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>producer/deleteProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-danger">DELETE</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding user deletion.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/producer/deleteProfile/:id" class="text-black">https://pilots.herokuapp.com/producer/deleteProfile/:id</a>
+                        <p><b>Response:</b> success/fail regarding user deletion.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/producer/deleteProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/producer/deleteProfile/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                     <li><h4 id='consumer'>Consumer</h4></li>
-                    <h3>Schema</h3>
-                        <pre>
+                    <h2>Schema</h2>
+<pre>
 {
     id: mongoose.Schema.Types.ObjectId,
     user_name: String,
@@ -119,107 +130,99 @@
     ]
 }</pre>
                         <h3>/consumer/</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                         <p><b>Response:</b>: all existing consumers in the system.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer" class="text-black">https://pilots.herokuapp.com/consumer</a>
+                         <p><b>Response:</b> all existing consumers in the system.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer" class="text-black">https://pilotsapp.herokuapp.com/consumer</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/consumer/createProfile</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-secondary">POST</span>
                         </p>
-                        <p>Parameters: user_name, password, full_name, phone, email</p>
-                        <p><b>Response:</b>: success/fail regarding user creation.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/createProfile" class="text-black">https://pilots.herokuapp.com/consumer/createProfile</a>
+                        <p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
+                        <p><b>Response:</b> success/fail regarding user creation.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/createProfile" class="text-black">https://pilotsapp.herokuapp.com/consumer/createProfile</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/consumer/getProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching id's profile details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/getProfile/:id" class="text-black">https://pilots.herokuapp.com/consumer/getProfile/:id</a>
+                        <p><b>Response:</b> all matching id's profile details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/getProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/getProfile/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
+<pre>
+{
+    "_id": {
+        "$oid": "5b14135fe7179a269ca65c44"
+    },
+    "user_name": "theKingOfLove",
+    "password": "xyza1234",
+    "full_name": "Roni Polisanov",
+    "phone": "034-974-3132",
+    "email": "alleyesonme@gmail.com",
+    "vip": false,
+    "subscriptions": [ 5b14135fe7179a269ca65c44 ],
+    "positive_votes": [ 5b14135fe7179a269ca65c44, 5b14135fe7179a269ca6fdsf2 ],
+    "negative_votes": [ 5b14135fe7179a269ca6fdgdx ]
+}</pre>
 
                         <h3>/consumer/updateProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p>Parameters: user_name, password, full_name, phone, email</p>
-                        <p><b>Response:</b>: success/fail regarding user update.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/updateProfile/:id" class="text-black">https://pilots.herokuapp.com/consumer/updateProfile/:id</a>
-                        </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>                        
+                        <p><b>Parameters:</b> user_name, password, full_name, phone, email</p>
+                        <p><b>Response:</b> success/fail regarding user update.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/updateProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/updateProfile/:id</a>
+                        </p>                       
 
                         <h3>/consumer/deleteProfile/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-danger">DELETE</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding user deletion.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/deleteProfile/:id" class="text-black">https://pilots.herokuapp.com/consumer/deleteProfile/:id</a>
+                        <p><b>Response:</b> success/fail regarding user deletion.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/deleteProfile/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/consumer/voteProject/:id/:status</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p>Parameters: projId</p>
-                        <p><b>Response:</b>: consumer's name, type of vote casted, voted project's title.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/voteProject/:id/:status" class="text-black">https://pilots.herokuapp.com/consumer/voteProject/:id/:status</a>
+                        <p><b>Parameters:</b> projId</p>
+                        <p><b>Response:</b> consumer's name, type of vote casted, voted project's title.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status" class="text-black">https://pilotsapp.herokuapp.com/consumer/voteProject/:id/:status</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/consumer/subscribe/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding subscription.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/subscribe/:id" class="text-black">https://pilots.herokuapp.com/consumer/subscribe/:id</a>
+                        <p><b>Response:</b> success/fail regarding subscription.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/subscribe/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/subscribe/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/consumer/unsubscribe/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding subscription removal.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/consumer/unsubscribe/:id" class="text-black">https://pilots.herokuapp.com/consumer/unsubscribe/:id</a>
+                        <p><b>Response:</b> success/fail regarding subscription removal.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id" class="text-black">https://pilotsapp.herokuapp.com/consumer/unsubscribe/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
-
+                    </article>
+                    <article>
                     <li><h4 id='project'>Project</h4></li>
-                    <h3>Schema</h3>
-                        <pre>
+                    <h2>Schema</h2>
+<pre>
 {
     id: mongoose.Schema.Types.ObjectId,
     category: String,
@@ -240,103 +243,100 @@
         { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
     ]
 }</pre>
+
                         <h3>/project/</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all projects details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project" class="text-black">https://pilots.herokuapp.com/project</a>
+                        <p><b>Response:</b> all projects details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project" class="text-black">https://pilotsapp.herokuapp.com/project</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
+<pre>
+{
+    "_id": {
+        "$oid": "5b1e4a25a6e87e0798b871c3"
+    },
+    "owner": {
+        "$oid": "5b1e49a6a6e87e0798b871bf"
+    },
+    "title": "I-Fill-U",
+    "category": "Projects",
+    "open_timestamp": "18/06/2018 16:93:00",
+    "description": "A cyber-sex suit in order to help those who can't let their loved ones the feelings they deserve.",
+    "goal": 100000,
+    "goal_status": 5,
+    "positive_voters": [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44, 5b14135fe7sg2435isac44 ],
+    "negative_voters": [],
+    "subscribers": [ 5b14135fe7179a269ca65c44, fj89f3n29e7179a269ca65c44, 13hf239ke7179a269ca65c44 ],
+    "deadline": "21/07/2018 18:00:00"
+}</pre>
 
                         <h3>/project/createProject/:owner</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-secondary">POST</span>
                         </p>
-                        <p><b>Response:</b>: created project and owner.</p>
-                        <p>Parameters: category, title, goal, description</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/createProject/:owner" class="text-black">https://pilots.herokuapp.com/project/createProject/:owner</a>
+                        <p><b>Response:</b> created project and owner.</p>
+                        <p><b>Parameters:</b> category, title, goal, description</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/createProject/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/createProject/:owner</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/getById/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching project Id's details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/getById/:id" class="text-black">https://pilots.herokuapp.com/project/getById/:id</a>
+                        <p><b>Response:</b> all matching project Id's details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/getById/:id" class="text-black">https://pilotsapp.herokuapp.com/project/getById/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/getByOwner/:owner</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching project owner's details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/getByOwner/:owner" class="text-black">https://pilots.herokuapp.com/project/getByOwner/:owner</a>
+                        <p><b>Response:</b> all matching project owner's details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/getByOwner/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/getByOwner/:owner</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/getByCategory/:category</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching project category's details.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/getByCategory/:owner" class="text-black">https://pilots.herokuapp.com/project/getByCategory/:owner</a>
+                        <p><b>Response:</b> all matching project category's details.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/getByCategory/:owner" class="text-black">https://pilotsapp.herokuapp.com/project/getByCategory/:owner</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/getByVotes/:positive_voters</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-success">GET</span>
                         </p>
-                        <p><b>Response:</b>: all matching project details that match the voters amount.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/getByVotes/:positive_voters" class="text-black">https://pilots.herokuapp.com/project/getByVotes/:positive_voters</a>
+                        <p><b>Response:</b> all matching project details that match the voters amount.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters" class="text-black">https://pilotsapp.herokuapp.com/project/getByVotes/:positive_voters</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/updateProject/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-primary">PUT</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding project's update.</p>
-                        <p>Parameters: category, title, goal, description</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/updateProject/:id" class="text-black">https://pilots.herokuapp.com/project/updateProject/:id</a>
+                        <p><b>Response:</b> success/fail regarding project's update.</p>
+                        <p><b>Parameters:</b> category, title, goal, description</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/updateProject/:id" class="text-black">https://pilotsapp.herokuapp.com/project/updateProject/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
 
                         <h3>/project/deleteProject/:id</h3>
-                        <p>Request Method:
+                        <p><b>Request Method:</b>
                             <span class="badge badge-danger">DELETE</span>
                         </p>
-                        <p><b>Response:</b>: success/fail regarding project's removal.</p>
-                        <p>URL:
-                            <a href="https://pilots.herokuapp.com/project/deleteProject/:id" class="text-black">https://pilots.herokuapp.com/project/deleteProject/:id</a>
+                        <p><b>Response:</b> success/fail regarding project's removal.</p>
+                        <p><b>URL:</b>
+                            <a href="https://pilotsapp.herokuapp.com/project/deleteProject/:id" class="text-black">https://pilotsapp.herokuapp.com/project/deleteProject/:id</a>
                         </p>
-                        <pre>
-                            JSON EXAMPLE
-                        </pre>
+                        </article>
                         </ul>
                 </div>
             </div>
