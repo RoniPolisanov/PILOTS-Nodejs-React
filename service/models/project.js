@@ -13,9 +13,10 @@ var mongoose = require("mongoose"),
         { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
       ],
       goal_status: Number,
-      open_timestamp: Date,
+      open_timestamp: String,
       description: String,
-      deadline: Date,
+      deadline: String,
+      cover_image: String,
       subscribers: [
         { type: mongoose.Schema.Types.ObjectId, ref: "ConsumerSchema" }
       ]

@@ -77,6 +77,7 @@ router.delete('/deleteProfile/:id', (req, res) => {
       });
     });
   });
+  
   //now after deleteing all the producer's projects, we can safely delte the producer's profile
   Producer.findByIdAndRemove(req.params.id, (err, docs) => {
     if (err){
