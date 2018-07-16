@@ -29,6 +29,10 @@ h3 {
     width: 100%;
 }
 
+main{
+    float: right;
+}
+
 main>article {
     padding-bottom: 10px;
 }
